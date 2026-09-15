@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convention Planner — free seating and floor-plan tool for events</title>
+<meta name="description" content="Draw the room, count the seats, staff the event, print the plan. Convention Planner is a free floor-planning tool for conventions and assemblies that runs in your browser — no account, and your files stay on your device.">
+<link rel="canonical" href="https://conventionplanner.org/">
+<link rel="icon" href="/cp_logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Convention Planner">
+<meta property="og:title" content="Convention Planner — free seating and floor-plan tool for events">
+<meta property="og:description" content="Draw the room, count the seats, staff the event, print the plan. Free, runs in your browser, your data stays with you.">
+<meta property="og:url" content="https://conventionplanner.org/">
+<meta property="og:image" content="https://conventionplanner.org/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convention Planner — free seating and floor-plan tool for events">
+<meta name="twitter:description" content="Draw the room, count the seats, staff the event, print the plan. Free, in your browser.">
+<meta name="twitter:image" content="https://conventionplanner.org/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Convention Planner",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (web browser)",
+  "url": "https://app.conventionplanner.org",
+  "description": "Free floor-planning tool for conventions and assemblies: seating that counts itself, sightlines, staffing schedules, and vector PDF export. Runs in the browser; projects are saved as files on your device.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "isAccessibleForFree": true,
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+  "inLanguage": ["en", "es"]
+}
+</script>
+<style>
+  :root{
+    --bg:#1e1e1e; --panel:#252526; --line:#3a3a3a; --text:#ececec; --muted:#a3a3a3;
+    --accent:#007acc; --accent-hi:#2b95e6; --seat:#d9c3ee;
+    --measure: 66ch;
+  }
+  @media (prefers-color-scheme: light){ /* stays dark by design; the app is dark */ }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-hi)} a:focus-visible,button:focus-visible{outline:2px solid var(--accent-hi);outline-offset:3px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:12px;white-space:nowrap;text-decoration:none;color:var(--text);font-weight:600;font-size:18px}
+  .brand img{width:34px;height:34px}
+  nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:15px} nav a:hover{color:var(--text)}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:6px;border:0;font-size:16px}
+  .btn:hover{background:var(--accent-hi)}
+  .btn.quiet{background:transparent;border:1px solid var(--line);color:var(--text)} .btn.quiet:hover{border-color:var(--muted);background:transparent}
+  .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:56px 0 64px}
+  h1{font-size:clamp(34px,4.6vw,52px);line-height:1.08;letter-spacing:-.01em;margin:0 0 18px;font-weight:700}
+  .lede{font-size:19px;color:var(--muted);max-width:var(--measure);margin:0 0 28px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .cta small{color:var(--muted);font-size:14px;width:100%}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-size:28px;line-height:1.2;margin:0 0 10px;font-weight:700;letter-spacing:-.005em}
+  .sub{color:var(--muted);max-width:var(--measure);margin:0 0 32px;font-size:17px}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+  .three h3{margin:0 0 8px;font-size:18px} .three p{margin:0;color:var(--muted);max-width:38ch}
+  .shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);min-height:200px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px}
+  .shot img{display:block;width:100%;height:auto}
+  .shot.empty{border-style:dashed;background:transparent}
+  .shot.empty span{padding:20px;text-align:center;line-height:1.5}
+  .shot.empty span b{display:block;color:var(--text);font-weight:500;margin-bottom:4px}
+  .hero-shot{min-height:300px}
+  .feat{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;padding:28px 0}
+  .feat+.feat{border-top:1px solid var(--line)}
+  .feat.flip .feat-text{order:2}
+  .feat h3{margin:0 0 8px;font-size:20px;font-weight:600} .feat p{margin:0;color:var(--muted);max-width:46ch}
+  @media (max-width:860px){ .feat{grid-template-columns:1fr;gap:16px} .feat.flip .feat-text{order:0} }
+  .chapters{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+  .chapters li{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+  .chapters .t{font-weight:600} .chapters .d{color:var(--muted);font-size:15px}
+  .chapters .soon{color:var(--muted);font-size:13px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+  .embed{position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;background:#000;margin:14px 0 6px}
+  .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  details{border-bottom:1px solid var(--line);padding:14px 0} details summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  details summary::-webkit-details-marker{display:none} details summary::after{content:"+";color:var(--muted);font-weight:400} details[open] summary::after{content:"–"}
+  details p{color:var(--muted);max-width:var(--measure);margin:10px 0 0}
+  footer{padding:36px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+  footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
+  footer a{color:var(--muted)} footer a:hover{color:var(--text)}
+  @media (max-width:860px){ .hero{grid-template-columns:1fr;padding-top:24px} .three{grid-template-columns:1fr} nav a{margin-left:14px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/"><img src="/cp_logo.svg" alt=""> Convention Planner</a>
+    <nav aria-label="Page">
+      <a href="#features">Features</a>
+      <a href="#tutorials">Tutorials</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://app.conventionplanner.org">Open the app</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" style="border-top:0">
+      <div>
+        <h1>Draw the room. Count the seats. Staff the event. Print the plan.</h1>
+        <p class="lede">A free floor-planning tool built for conventions and assemblies. Seating counts itself, sightlines show who can see the stage, and the whole thing runs in your browser — no account, and your files stay on your device.</p>
+        <div class="cta">
+          <a class="btn" href="https://app.conventionplanner.org">Launch Convention Planner</a>
+          <a class="btn quiet" href="#tutorials">Watch the tutorials</a>
+          <small>Free. Works in English and Spanish. Open source under the GPL.</small>
+        </div>
+      </div>
+      <figure class="shot hero-shot" data-src="images/hero.png" data-label="hero.png — the app with a real floor plan open" style="margin:0"></figure>
+    </section>
+
+    <section id="how">
+      <h2>One page, no service, your files</h2>
+      <p class="sub">Convention Planner is a single web page, not a subscription. Open it and the whole tool loads into your browser; from there, everything happens on your computer.</p>
+      <div class="three">
+        <div><h3>Nothing to sign up for</h3><p>There is no login and no cloud. You open the page and start drawing.</p></div>
+        <div><h3>Your project is a file</h3><p>Saving writes one project file to your device. Share it by handing someone the file — the same way you'd share a spreadsheet.</p></div>
+        <div><h3>Private by design</h3><p>No server stores your plans, so there's nothing to leak. The only thing recorded is an anonymous, city-level count of visits.</p></div>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>What it does</h2>
+      <p class="sub">Everything an event floor plan needs, in the vocabulary of events rather than CAD.</p>
+              <div class="feat">
+          <div class="feat-text"><h3>Seating that counts itself</h3><p>Define chair profiles, draw a section as any polygon, and the app fills it with seats and keeps a live count. Reshape it and the number updates as you drag.</p></div>
+          <figure class="shot" data-src="images/seating.png" data-label="seating.png" style="margin:0"></figure>
+        </div>
+        <div class="feat flip">
+          <div class="feat-text"><h3>Chair Styles</h3><p>Lasso any chairs — held seats, ADA companion seats, a VIP block — and tag them with a number. A per-page legend tallies each style for the sheet and the whole project.</p></div>
+          <figure class="shot" data-src="images/chair-styles.png" data-label="chair-styles.png" style="margin:0"></figure>
+        </div>
+        <div class="feat">
+          <div class="feat-text"><h3>Screens and sightlines</h3><p>Place screens with viewing cones and see, chair by chair, who has a clear view before anyone sits down.</p></div>
+          <figure class="shot" data-src="images/sightlines.png" data-label="sightlines.png" style="margin:0"></figure>
+        </div>
+        <div class="feat flip">
+          <div class="feat-text"><h3>Floor plans at true scale</h3><p>Calibrate a blueprint image or PDF with two known points, or work on a blank sheet at a standard drawing scale. Feet-and-inches or metric, lossless either way.</p></div>
+          <figure class="shot" data-src="images/scale.png" data-label="scale.png" style="margin:0"></figure>
+        </div>
+        <div class="feat">
+          <div class="feat-text"><h3>Measuring and annotation</h3><p>Dimensions, lines, polylines, boxes, revision clouds, area measurements, callouts, counters, and text — drawn in real units, printed exactly as shown.</p></div>
+          <figure class="shot" data-src="images/annotation.png" data-label="annotation.png" style="margin:0"></figure>
+        </div>
+        <div class="feat flip">
+          <div class="feat-text"><h3>Key items and signage</h3><p>Numbered markers for signs, AV stations, and check-in points, plus a Key Item report so the crew placing things has a list that matches the drawing.</p></div>
+          <figure class="shot" data-src="images/key-items.png" data-label="key-items.png" style="margin:0"></figure>
+        </div>
+        <div class="feat">
+          <div class="feat-text"><h3>Layers and organization</h3><p>Group items into layers you can show, hide, or lock together. Set a working layer and everything you draw lands there.</p></div>
+          <figure class="shot" data-src="images/layers.png" data-label="layers.png" style="margin:0"></figure>
+        </div>
+        <div class="feat flip">
+          <div class="feat-text"><h3>Attendants and staffing</h3><p>Roster, posts on the plan, shifts, and a chain of command. Print just the slice each captain needs. Import and export with Excel.</p></div>
+          <figure class="shot" data-src="images/staffing.png" data-label="staffing.png" style="margin:0"></figure>
+        </div>
+        <div class="feat">
+          <div class="feat-text"><h3>Share the file, split the work, merge it back</h3><p>One person lays out seating while another builds the staff schedule in their own copy. Merge folds the second file into the first — with a preview so you accept exactly what belongs.</p></div>
+          <figure class="shot" data-src="images/merge.png" data-label="merge.png" style="margin:0"></figure>
+        </div>
+        <div class="feat flip">
+          <div class="feat-text"><h3>Print and export</h3><p>True vector PDFs that stay sharp at any size, print-to-scale sheets, a Markup PDF that returns a supplied drawing with your work layered on top, and three reports.</p></div>
+          <figure class="shot" data-src="images/print.png" data-label="print.png" style="margin:0"></figure>
+        </div>
+    </section>
+
+    <section id="tutorials">
+      <h2>Tutorials</h2>
+      <p class="sub">Short videos, one chapter at a time. Each opens with the problem it solves, then shows you how. New chapters appear here as they're published.</p>
+      <ul class="chapters" id="chapters"></ul>
+    </section>
+
+    <section id="faq">
+      <h2>Questions</h2>
+      <details><summary>Does it work offline?</summary><p>Yes. From the app's Help menu, download the offline copy — a single file that contains the whole app. Open it in a browser on a machine with no internet and everything works, including PDF import and export.</p></details>
+      <details><summary>Where are my projects stored?</summary><p>On your own device, as a file you save and open. Nothing is uploaded anywhere. If you want to collaborate, send someone the file — or use Merge to combine two people's work.</p></details>
+      <details><summary>What does it cost?</summary><p>Nothing. It's free to use, and the source code is public under the GPL so anyone can see exactly what it does.</p></details>
+      <details><summary>Which browsers?</summary><p>Any current browser — Chrome, Edge, Firefox, or Safari — on a desktop or laptop. It's a drawing tool, so a mouse or trackpad and a reasonably sized screen make it much more comfortable than a phone.</p></details>
+      <details><summary>Can I use it in Spanish?</summary><p>Yes. The whole interface, the manual, and the printed reports are available in English and Spanish; switch from the toolbar.</p></details>
+      <details><summary>Found a bug or want a feature?</summary><p>Use the Feedback button inside the app, or email <a href="mailto:feedback@conventionplanner.org">feedback@conventionplanner.org</a>. Feedback goes straight to the developer.</p></details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>Convention Planner is free and open source.</div>
+      <div><a href="https://app.conventionplanner.org">Open the app</a> &nbsp;·&nbsp; <a href="GITHUB_REPO_URL">Source on GitHub</a> &nbsp;·&nbsp; <a href="mailto:feedback@conventionplanner.org">feedback@conventionplanner.org</a></div>
+    </div>
+  </footer>
+</div>
+
+<script>
+// Tutorial chapters. Add a YouTube ID to publish a chapter (privacy-enhanced embed).
+const CHAPTERS = [
+  { t: "Why Convention Planner?", d: "What it is and who it's for.", id: "" },
+  { t: "Getting started — setup and navigation", d: "Projects, pages, scale, and finding your way around.", id: "" },
+  { t: "Seating areas and chair profiles", d: "Draw sections and let the seats count themselves.", id: "" },
+  { t: "Chair Styles — tagging and numbering", d: "Mark held seats, ADA, VIP, and any special blocks.", id: "" },
+  { t: "Obstacles, aisles, and screens", d: "Carve out space and check the view.", id: "" },
+  { t: "Measuring and annotation", d: "Dimensions, notes, and markup that print cleanly.", id: "" },
+  { t: "Key items and signage", d: "Numbered markers for signs, AV, and more.", id: "" },
+  { t: "Layers and organization", d: "Keep complex plans readable and reusable.", id: "" },
+  { t: "Attendants and staffing", d: "Roster, posts, shifts, and chain of command.", id: "" },
+  { t: "Printing, PDF export, and reports", d: "Get your work out — sharp and to scale.", id: "" }
+];
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.getElementById('chapters').innerHTML = CHAPTERS.map(c => {
+  const media = c.id
+    ? `<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(c.id)}?rel=0" title="${esc(c.t)}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`
+    : '';
+  return `<li><div><div class="t">${esc(c.t)}</div><div class="d">${esc(c.d)}</div>${media}</div>${c.id ? '' : '<span class="soon">Coming soon</span>'}</li>`;
+}).join('');
+
+// Screenshots: each .shot loads images/<name>. Add the file and it appears; until
+// then a dashed placeholder names the file it's waiting for. No HTML edits needed.
+document.querySelectorAll('.shot[data-src]').forEach(fig => {
+  const img = new Image();
+  img.alt = fig.dataset.label.split(' — ')[1] || '';
+  img.onload = () => { fig.classList.remove('empty'); fig.replaceChildren(img); };
+  img.onerror = () => { fig.classList.add('empty'); fig.innerHTML = '<span><b>Screenshot placeholder</b>' + fig.dataset.label.replace(/[<>&]/g, '') + '</span>'; };
+  img.src = fig.dataset.src;
+});
+</script>
+</body>
+</html>
