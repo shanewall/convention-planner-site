@@ -88,6 +88,16 @@
   footer{padding:36px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
   footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
   footer a{color:var(--muted)} footer a:hover{color:var(--text)}
+  .fbm{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+  .fbm[hidden]{display:none}
+  .fbm-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;width:min(520px,100%)}
+  .fbm-card h3{margin:0 0 4px;font-size:22px} .fbm-sub{color:var(--muted);margin:0 0 14px;font-size:15px}
+  .fbm-card label{display:block;font-size:14px;color:var(--muted);margin:0 0 12px}
+  .fbm-card select,.fbm-card textarea,.fbm-card input[type=email]{display:block;width:100%;margin-top:6px;background:var(--bg);color:var(--text);border:1px solid #666;border-radius:6px;padding:9px 10px;font:inherit;font-size:15px;box-sizing:border-box}
+  .fbm-card textarea{resize:vertical}
+  .fbm-card textarea:focus,.fbm-card input:focus,.fbm-card select:focus{outline:none;border-color:var(--accent-hi);box-shadow:0 0 0 2px rgba(0,122,204,.35)}
+  .fbm-status{min-height:1.3em;font-size:14px;color:var(--muted);margin:2px 0 12px}
+  .fbm-actions{display:flex;gap:10px;justify-content:flex-end}
   @media (max-width:860px){ .hero{grid-template-columns:1fr;padding-top:24px} .three{grid-template-columns:1fr} nav a{margin-left:14px} }
 </style>
 </head>
@@ -114,7 +124,7 @@
           <small>Free. Works in English and Spanish. Open source under the GPL.</small>
         </div>
       </div>
-      <figure class="shot hero-shot" data-src="images/hero.png" data-label="hero.png — the app with a real floor plan open" style="margin:0"></figure>
+      <figure class="shot hero-shot" data-src="images/hero" data-label="hero (.gif/.png/.jpg) — the app with a real floor plan open" style="margin:0"></figure>
     </section>
 
     <section id="how">
@@ -132,43 +142,43 @@
       <p class="sub">Everything an event floor plan needs, in the vocabulary of events rather than CAD.</p>
               <div class="feat">
           <div class="feat-text"><h3>Seating that counts itself</h3><p>Define chair profiles, draw a section as any polygon, and the app fills it with seats and keeps a live count. Reshape it and the number updates as you drag.</p></div>
-          <figure class="shot" data-src="images/seating.png" data-label="seating.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/seating" data-label="seating (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat flip">
           <div class="feat-text"><h3>Chair Styles</h3><p>Lasso any chairs — held seats, ADA companion seats, a VIP block — and tag them with a number. A per-page legend tallies each style for the sheet and the whole project.</p></div>
-          <figure class="shot" data-src="images/chair-styles.png" data-label="chair-styles.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/chair-styles" data-label="chair-styles (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat">
           <div class="feat-text"><h3>Screens and sightlines</h3><p>Place screens with viewing cones and see, chair by chair, who has a clear view before anyone sits down.</p></div>
-          <figure class="shot" data-src="images/sightlines.png" data-label="sightlines.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/sightlines" data-label="sightlines (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat flip">
           <div class="feat-text"><h3>Floor plans at true scale</h3><p>Calibrate a blueprint image or PDF with two known points, or work on a blank sheet at a standard drawing scale. Feet-and-inches or metric, lossless either way.</p></div>
-          <figure class="shot" data-src="images/scale.png" data-label="scale.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/scale" data-label="scale (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat">
           <div class="feat-text"><h3>Measuring and annotation</h3><p>Dimensions, lines, polylines, boxes, revision clouds, area measurements, callouts, counters, and text — drawn in real units, printed exactly as shown.</p></div>
-          <figure class="shot" data-src="images/annotation.png" data-label="annotation.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/annotation" data-label="annotation (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat flip">
           <div class="feat-text"><h3>Key items and signage</h3><p>Numbered markers for signs, AV stations, and check-in points, plus a Key Item report so the crew placing things has a list that matches the drawing.</p></div>
-          <figure class="shot" data-src="images/key-items.png" data-label="key-items.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/key-items" data-label="key-items (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat">
           <div class="feat-text"><h3>Layers and organization</h3><p>Group items into layers you can show, hide, or lock together. Set a working layer and everything you draw lands there.</p></div>
-          <figure class="shot" data-src="images/layers.png" data-label="layers.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/layers" data-label="layers (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat flip">
           <div class="feat-text"><h3>Attendants and staffing</h3><p>Roster, posts on the plan, shifts, and a chain of command. Print just the slice each captain needs. Import and export with Excel.</p></div>
-          <figure class="shot" data-src="images/staffing.png" data-label="staffing.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/staffing" data-label="staffing (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat">
           <div class="feat-text"><h3>Share the file, split the work, merge it back</h3><p>One person lays out seating while another builds the staff schedule in their own copy. Merge folds the second file into the first — with a preview so you accept exactly what belongs.</p></div>
-          <figure class="shot" data-src="images/merge.png" data-label="merge.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/merge" data-label="merge (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
         <div class="feat flip">
           <div class="feat-text"><h3>Print and export</h3><p>True vector PDFs that stay sharp at any size, print-to-scale sheets, a Markup PDF that returns a supplied drawing with your work layered on top, and three reports.</p></div>
-          <figure class="shot" data-src="images/print.png" data-label="print.png" style="margin:0"></figure>
+          <figure class="shot" data-src="images/print" data-label="print (.gif/.png/.jpg)" style="margin:0"></figure>
         </div>
     </section>
 
@@ -185,14 +195,27 @@
       <details><summary>What does it cost?</summary><p>Nothing. It's free to use, and the source code is public under the GPL so anyone can see exactly what it does.</p></details>
       <details><summary>Which browsers?</summary><p>Any current browser — Chrome, Edge, Firefox, or Safari — on a desktop or laptop. It's a drawing tool, so a mouse or trackpad and a reasonably sized screen make it much more comfortable than a phone.</p></details>
       <details><summary>Can I use it in Spanish?</summary><p>Yes. The whole interface, the manual, and the printed reports are available in English and Spanish; switch from the toolbar.</p></details>
-      <details><summary>Found a bug or want a feature?</summary><p>Use the Feedback button inside the app, or email <a href="mailto:feedback@conventionplanner.org">feedback@conventionplanner.org</a>. Feedback goes straight to the developer.</p></details>
+      <details><summary>Found a bug or want a feature?</summary><p><a href="#" class="fb-open">Send feedback</a> right here, use the Feedback button inside the app, or email <a href="mailto:feedback@conventionplanner.org">feedback@conventionplanner.org</a>. It goes straight to the developer.</p></details>
     </section>
   </main>
+<div id="fb-modal" class="fbm" hidden>
+  <div class="fbm-card" role="dialog" aria-modal="true" aria-labelledby="fbm-title">
+    <h3 id="fbm-title">Send feedback</h3>
+    <p class="fbm-sub">Found a bug or have an idea? It goes straight to the developer.</p>
+    <label>Type <select id="fb-type"><option value="bug">Bug report</option><option value="feature">Feature request</option><option value="general" selected>General feedback</option></select></label>
+    <label>Message <textarea id="fb-message" rows="6" maxlength="4000" placeholder="What happened, or what would help?"></textarea></label>
+    <label>Your email (optional — only if you want a reply) <input id="fb-email" type="email" maxlength="200" placeholder="name@example.com"></label>
+    <input id="fb-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <div id="fb-status" class="fbm-status"></div>
+    <div class="fbm-actions"><button type="button" class="btn quiet" id="fb-close">Close</button><button type="button" class="btn" id="fb-send">Send</button></div>
+  </div>
+</div>
+
 
   <footer>
     <div class="row">
       <div>Convention Planner is free and open source.</div>
-      <div><a href="https://app.conventionplanner.org">Open the app</a> &nbsp;·&nbsp; <a href="GITHUB_REPO_URL">Source on GitHub</a> &nbsp;·&nbsp; <a href="mailto:feedback@conventionplanner.org">feedback@conventionplanner.org</a></div>
+      <div><a href="https://app.conventionplanner.org">Open the app</a> &nbsp;·&nbsp; <a href="GITHUB_REPO_URL">Source on GitHub</a> &nbsp;·&nbsp; <a href="#" class="fb-open">Send feedback</a></div>
     </div>
   </footer>
 </div>
@@ -219,14 +242,47 @@ document.getElementById('chapters').innerHTML = CHAPTERS.map(c => {
   return `<li><div><div class="t">${esc(c.t)}</div><div class="d">${esc(c.d)}</div>${media}</div>${c.id ? '' : '<span class="soon">Coming soon</span>'}</li>`;
 }).join('');
 
-// Screenshots: each .shot loads images/<name>. Add the file and it appears; until
-// then a dashed placeholder names the file it's waiting for. No HTML edits needed.
+// Screenshots: each .shot looks in images/ for <name>.gif, .png, .jpg, or .webp
+// (first one found wins). Add the file and it appears; until then a dashed
+// placeholder names the file it's waiting for. No HTML edits needed.
 document.querySelectorAll('.shot[data-src]').forEach(fig => {
-  const img = new Image();
-  img.alt = fig.dataset.label.split(' — ')[1] || '';
-  img.onload = () => { fig.classList.remove('empty'); fig.replaceChildren(img); };
-  img.onerror = () => { fig.classList.add('empty'); fig.innerHTML = '<span><b>Screenshot placeholder</b>' + fig.dataset.label.replace(/[<>&]/g, '') + '</span>'; };
-  img.src = fig.dataset.src;
+  const base = fig.dataset.src, exts = ['gif', 'png', 'jpg', 'webp'];
+  const label = fig.dataset.label;
+  const tryNext = (i) => {
+    if (i >= exts.length) { fig.classList.add('empty'); fig.innerHTML = '<span><b>Screenshot or GIF placeholder</b>' + label.replace(/[<>&]/g, '') + '</span>'; return; }
+    const img = new Image();
+    img.alt = (label.split(' — ')[1] || '');
+    img.onload = () => { fig.classList.remove('empty'); fig.replaceChildren(img); };
+    img.onerror = () => tryNext(i + 1);
+    img.src = base + '.' + exts[i];
+  };
+  tryNext(0);
+});
+
+// Feedback: posts to the app's /feedback endpoint (same store + email as the app).
+const FEEDBACK_ENDPOINT = 'https://app.conventionplanner.org/feedback';
+const FEEDBACK_MAILTO = 'mailto:feedback@conventionplanner.org';
+const fbm = document.getElementById('fb-modal');
+const fbStatus = document.getElementById('fb-status');
+const openFb = (e) => { if (e) e.preventDefault(); fbStatus.textContent = ''; fbStatus.style.color = ''; document.getElementById('fb-send').disabled = false; fbm.hidden = false; setTimeout(() => document.getElementById('fb-message').focus(), 50); };
+const closeFb = () => { fbm.hidden = true; };
+document.querySelectorAll('.fb-open').forEach(a => a.addEventListener('click', openFb));
+document.getElementById('fb-close').addEventListener('click', closeFb);
+fbm.addEventListener('click', e => { if (e.target === fbm) closeFb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !fbm.hidden) closeFb(); });
+document.getElementById('fb-send').addEventListener('click', async () => {
+  const btn = document.getElementById('fb-send');
+  const message = document.getElementById('fb-message').value.trim();
+  if (message.length < 3) { fbStatus.textContent = 'Please write a message first.'; return; }
+  btn.disabled = true; fbStatus.textContent = 'Sending…';
+  const payload = { type: document.getElementById('fb-type').value, message, email: document.getElementById('fb-email').value.trim(), hp: document.getElementById('fb-hp').value, page: 'landing', version: 'site' };
+  const fail = (msg) => { fbStatus.style.color = '#e0a030'; fbStatus.innerHTML = msg + ' <a href="' + FEEDBACK_MAILTO + '" style="color:var(--accent-hi)">email instead</a>.'; btn.disabled = false; };
+  try {
+    const r = await fetch(FEEDBACK_ENDPOINT, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
+    const j = await r.json().catch(() => ({}));
+    if (r.ok && j.ok) { fbStatus.style.color = '#7fd6c8'; fbStatus.textContent = 'Thanks — your feedback was sent.'; document.getElementById('fb-message').value = ''; setTimeout(closeFb, 1400); return; }
+    fail(r.status === 429 ? 'Too many messages in a short time — please try later, or' : 'Could not send —');
+  } catch (e) { fail('Could not send —'); }
 });
 </script>
 </body>
